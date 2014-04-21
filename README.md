@@ -12,7 +12,7 @@ Use `tranquire` to register a set of source transforms/transpilers to run on a g
 `React JSX w/ES6 syntax` => `valid es6` => `valid es5`
 
 ```js
-var install = require("tranquire");
+var tranquire = require("tranquire");
 
 // Allows you to write React JSX with ECMAScript 6 syntax
 tranquire('.jsx', [compileJSX, compileES6]);

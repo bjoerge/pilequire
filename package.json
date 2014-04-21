@@ -1,0 +1,8 @@
+{
+  "name": "tranquire",
+  "version": "0.0.1",
+  "description": "Add multiple source transforms/transpilers for node.js source files",
+  "main": "index.js",
+  "author": "Bjørge Næss",
+  "license": "MIT"
+}

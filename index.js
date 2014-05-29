@@ -15,7 +15,7 @@ function pilequire(extension, compilers, filterFn) {
 
   require.extensions[extension] = function (module, filename) {
 
-    if (filterFn && !filterFn(module, filename)) {
+    if (filterFn && !filterFn(filename)) {
       return originalCompile(module, filename);
     }
 

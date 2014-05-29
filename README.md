@@ -41,12 +41,12 @@ The compile functions are applied in the given order, and the `source` parameter
 Where:
 - `extension` is a string with the file extension to transform, including a leading dot, i.e. `.js` 
 - `transform(s)` is either a single function or an array of transform/compile functions with the signature `function(filename, source) {...}`
-- `filterFn` is an optional function that is called for every require()d file and should return true or false depending on whether the
-file/module should be transformed for not. Use this to e.g. exclude files from the `node_modules` folder:
+- `filterFn(filename)` is an optional function that is called for every require()d file and should return true or false depending on whether the
+file should be transformed for not. Use this to e.g. exclude files from the `node_modules` folder:
 
 ```js
 const EXCLUDE_FILES = /^(?!.*node_modules)/
-pilequire.install('.js', compileES6, function(module, filename) {
+pilequire.install('.js', compileES6, function(filename) {
   return EXCLUDE_FILES.test(filename)
 });
 ```
@@ -91,7 +91,7 @@ function compileJSX(filename, src) {
 var pilequire = require('..');
 
 const EXCLUDE_FILES = /^(?!.*node_modules)/;
-function filterFn(module, filename) {
+function filterFn(filename) {
   return EXCLUDE_FILES.test(filename)
 }
 // Register compilers for .jsx and .js

@@ -35,7 +35,7 @@ function compileJSX(filename, src) {
 var pilequire = require('..');
 
 const EXCLUDE_FILES = /^(?!.*node_modules)/;
-function filterFn(module, filename) {
+function filterFn(filename) {
   return EXCLUDE_FILES.test(filename)
 }
 // Register compilers for .jsx and .js

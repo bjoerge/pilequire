@@ -6,7 +6,7 @@ require(require.resolve(traceur.RUNTIME_PATH));
 
 function compileES6(filename, contents) {
 
-  var result = traceur.compile(contents,  { filename: filename, modules: 'inline' });
+  var result = traceur.compile(contents,  { filename: filename, modules: 'commonjs' });
 
   if (result.errors.length > 0) {
     throw new Error(result.errors.join("\n"));
@@ -32,11 +32,11 @@ function compileJSX(filename, src) {
   }
 }
 
-var pilequire = require('..');
+var pilequire = require('../..');
 
-const EXCLUDE_FILES = /^(?!.*node_modules)/;
+var EXCLUDE = /.*node_modules/;
 function filterFn(filename) {
-  return EXCLUDE_FILES.test(filename)
+  return !EXCLUDE.test(filename)
 }
 // Register compilers for .jsx and .js
 pilequire.install('.jsx', [compileJSX, compileES6], filterFn);

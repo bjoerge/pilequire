@@ -6,7 +6,7 @@
   "author": "Bjørge Næss",
   "license": "MIT",
   "scripts": {
-    "test": "node_modules/.bin/mocha -r example/install-compilers.js test.js"
+    "test": "node_modules/.bin/mocha -r ./example/utils/install-compilers.js test.js"
   },
   "dependencies": {},
   "devDependencies": {

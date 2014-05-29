@@ -2,10 +2,10 @@
 // before the es6 compiler. Need to investigate more.
 require("expect.js");
 
-require("./install-compilers");
+require("./utils/install-compilers");
 
 // Now the React component written with ES6 and JSX can be require()'d
-var SomeComponent = require("./lib/SomeComponent");
+var SomeComponent = require("./SomeComponent");
 
 // So can regular .js-files with es6 syntax
-require("./lib/es6");
+require("./es6");

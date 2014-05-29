@@ -16,7 +16,7 @@ Use `pilequire` to register a set of source transforms/transpilers to run on a g
 `React JSX w/ES6 syntax` => `valid es6` => `valid es5`
 
 ```js
-const pilequire = require("pilequire");
+var pilequire = require("pilequire");
 
 function compileJSX2JS(filename, source) {
   // compile and return jsx
@@ -45,9 +45,9 @@ Where:
 file should be transformed for not. Use this to e.g. exclude files from the `node_modules` folder:
 
 ```js
-const EXCLUDE_FILES = /^(?!.*node_modules)/
+var EXCLUDE = /.*node_modules/;
 pilequire.install('.js', compileES6, function(filename) {
-  return EXCLUDE_FILES.test(filename)
+  return !EXCLUDE.test(filename)
 });
 ```
 
@@ -90,9 +90,9 @@ function compileJSX(filename, src) {
 
 var pilequire = require('..');
 
-const EXCLUDE_FILES = /^(?!.*node_modules)/;
+var EXCLUDE = /.*node_modules/;
 function filterFn(filename) {
-  return EXCLUDE_FILES.test(filename)
+  return !EXCLUDE.test(filename)
 }
 // Register compilers for .jsx and .js
 pilequire.install('.jsx', [compileJSX, compileES6], filterFn);
@@ -102,5 +102,5 @@ pilequire.install('.js', compileES6, filterFn);
 var SomeComponent = require("./SomeComponent");
 
 // So can regular .js-files with es6 syntax
-var moduleWrittenInEs6 = require("./es6module");
+var moduleWrittenInEs6 = require("./es6");
 ```

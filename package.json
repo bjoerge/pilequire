@@ -1,6 +1,6 @@
 {
   "name": "pilequire",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Add multiple source transforms/transpilers for node.js source files",
   "main": "index.js",
   "author": "Bjørge Næss",

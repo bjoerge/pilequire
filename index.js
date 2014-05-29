@@ -3,25 +3,25 @@
 
 var fs = require("fs");
 
-module.exports = tranquire;
+module.exports = { install: pilequire };
 
-function tranquire(extension, transforms, filterFn) {
+function pilequire(extension, compilers, filterFn) {
 
-  if (!Array.isArray(transforms)) {
-    transforms = [transforms];
+  if (!Array.isArray(compilers)) {
+    compilers = [compilers];
   }
 
-  var oldHandler = (require.extensions[extension] || require.extensions['.js']).bind(require.extensions);
+  var originalCompile = (require.extensions[extension] || require.extensions['.js']).bind(require.extensions);
 
   require.extensions[extension] = function (module, filename) {
 
     if (filterFn && !filterFn(module, filename)) {
-      return oldHandler(module, filename);
+      return originalCompile(module, filename);
     }
 
     var src = fs.readFileSync(filename, {encoding: 'utf8'});
 
-    var transformed = transforms.reduce(function (src, transformer) {
+    var transformed = compilers.reduce(function (src, transformer) {
       return transformer(filename, src);
     }, src);
 

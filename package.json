@@ -1,8 +1,20 @@
 {
-  "name": "tranquire",
+  "name": "pilequire",
   "version": "0.0.1",
   "description": "Add multiple source transforms/transpilers for node.js source files",
   "main": "index.js",
   "author": "Bjørge Næss",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "node_modules/.bin/mocha -r example/install-compilers.js test.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "envify": "^1.2.1",
+    "mocha": "^1.20.0",
+    "react": "^0.10.0",
+    "react-tools": "^0.10.0",
+    "traceur": "0.0.42"
+  }
 }
